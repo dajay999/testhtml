@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta content="width=device-width,initial-scale=1.0,user-scalable=no" name="viewport">
+  <title>Slike Player</title>
+ <script type="text/javascript" src="http://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+<script type="text/javascript" src="http://videoplayer.indiatimes.com/v2/includes/ima3.js"></script>
+  <script src = "http://videoplayer.indiatimes.com/v2/sdk.js"></script>
+  <script>
+  var SPL = {
+    config: {
+      sdk: {
+        apikey: "test",
+        referrer: "document.referrer"
+      }
+    }
+  };
+  </script>
+  <style> 
+  #outerPlayer{
+    position: absolute;
+    top:5px;
+    left:5px;
+    height:394px;
+    width:700px;
+    background-color:black;
+  }
+  #playerContainer {
+   position:absolute;
+    height: 100%;
+    width: 100%;
+  }
+  #nextb{
+    position: absolute;
+    top:500px;
+    left:5px;
+  }
+</style>
+</head>
+<body>
+<div id="outerPlayer" class="slikecontainer">
+    <div id="playerContainer" class=""></div>
+</div>
+<script type="text/javascript">
+  function loadVideo() {
+    var jsWebUrl = location.protocol + '//' + location.host;
+    var player;
+    var config = {
+      page: {
+        origin: jsWebUrl,
+      },
+      player: {
+        skipAd: true,
+        pageSection:  "default",
+        adSection: "",
+        autoPlay:  true,
+        nextVideoCounter: 5000,
+        startFromSec: 0,
+        pauseOnHide: false,
+      },
+      controls:{
+        controlsType: "custom",
+        showDimIcon: false,
+        showFullScreen: true,
+        showAutoPlayNext: true,
+        showShare: true,
+        volume: 100,
+        mute: false,
+        autoPlayNext: true,
+        showNextButton: true,
+        showPrevButton: true,
+        showSpeedMenu: true,
+      },
+      video: {
+        id: "1x13vaqggk",
+        nextVideoID: "1x1bemyglo",
+        prevVideoID: "1x1eafjggl",
+        image: "",
+        title: "",
+        shareUrl: "www.toi.in",
+      },
+      events: {
+        onPlayerEvent: function(evtname, data) {
+        },
+        onAdEvent: function(evtname, data) {
+        }
+      }
+    };
+
+    function loadPlayer() {
+      window.S.load('playerContainer', config, function(inst) {
+        console.log("Player load Completed");
+        player = inst;
+      });
+    }
+    loadPlayer();
+}
+
+setTimeout(function(){
+  loadVideo();
+}, 2000);
+
+</script>
+<br>
+<input type="button" name="" value="On Click Demo" onclick="loadVideo()" id="nextb">
+</body>
+</html>
